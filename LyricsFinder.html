@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lyrics Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    input, button {
+      padding: 0.5rem;
+      margin: 0.5rem;
+      font-size: 1rem;
+    }
+    #lyrics {
+      margin-top: 2rem;
+      white-space: pre-wrap;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Lyrics Finder</h1>
+  <input type="text" id="artist" placeholder="Artist name" />
+  <input type="text" id="title" placeholder="Song title" />
+  <button onclick="getLyrics()">Search Lyrics</button>
+
+  <div id="lyrics">Enter an artist and a song title to find lyrics.</div>
+
+  <script>
+    function getLyrics() {
+      const artist = document.getElementById('artist').value.trim();
+      const title = document.getElementById('title').value.trim();
+      const lyricsDiv = document.getElementById('lyrics');
+
+      if (!artist || !title) {
+        lyricsDiv.textContent = 'Please enter both artist and song title.';
+        return;
+      }
+
+      lyricsDiv.textContent = 'Fetching lyrics...';
+
+      fetch(`https://api.lyrics.ovh/v1/${encodeURIComponent(artist)}/${encodeURIComponent(title)}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.lyrics) {
+            lyricsDiv.textContent = data.lyrics;
+          } else {
+            lyricsDiv.textContent = 'Lyrics not found.';
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching lyrics:', error);
+          lyricsDiv.textContent = 'An error occurred while fetching lyrics.';
+        });
+    }
+  </script>
+</body>
+</html>cs
