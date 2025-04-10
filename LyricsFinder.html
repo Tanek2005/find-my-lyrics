@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Lyrics Finder</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <script src="api.js"></script>
 </head>
@@ -16,7 +17,18 @@
     <h1>Lyrics Finder</h1>
     <input type="text" id="artist" placeholder="Singer Name" />
     <input type="text" id="title" placeholder="Song Title" />
-    <button onclick="getLyrics()">Search Lyrics</button>
+    <div>
+      <button id="search" onclick="getLyrics()">Search Lyrics</button>
+      <button id="play" onclick="playSong()">Play Song</button>
+    </div>
+  </div>
+
+  <div class="music">
+    <button id="pause" onclick="togglePlay()"><i class="fa-solid fa-play playbtn"></i></button>
+    <div>
+      <h2 id="song-title">Song Title</h2>
+      <h3 id="song-artist">Artist</h3>
+    </div>
   </div>
 
   <div class="sec">
