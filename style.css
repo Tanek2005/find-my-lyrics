@@ -37,7 +37,7 @@
     margin-bottom: 1.5rem;
   }
 
-  .fir, .sec {
+  .fir, .sec, .song-link{
     background: rgba(255, 255, 255, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 20px;
@@ -92,7 +92,12 @@
     background-color: #FECA94;
     box-shadow: 0 0 20px #FECA94;
   }
-
+  .logos{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: auto;
+    color:  #0f0c29;
+  }
   .sec {
     color: #0f0c29;
     font-weight: 500;
@@ -111,3 +116,37 @@
     white-space: pre-wrap;
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
   }
+  .hidden {
+    display: none;
+  }
+  .song-link {
+  opacity: 0;
+  transform: translateY(-20px) scale(0.90);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
+}
+
+.song-link.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+  #apple-music, #yt-music, #spotify{
+    filter: grayscale(100%) brightness(0);
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+  #apple-music:hover , #yt-music:hover, #spotify:hover{
+    transform: scale(1.2);
+  }
+ #yt-music:hover {
+  filter: grayscale(0%) brightness(1) drop-shadow(0 0 15px #ff0000e3);
+}
+#spotify:hover {
+  filter: grayscale(0%) brightness(1) drop-shadow(0 0 15px #1db954ea);
+}
+#apple-music:hover {
+  filter: grayscale(0%) brightness(1) drop-shadow(0 0 15px #fc3c42e5);
+}
+.hidden {
+  display: none;
+}
